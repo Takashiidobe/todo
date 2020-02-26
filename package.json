@@ -1,0 +1,53 @@
+{
+	"author": "takashiidobe",
+	"name": "todo",
+	"version": "0.1.0",
+	"private": true,
+	"homepage": "./",
+	"main": "public/electron.js",
+	"build": {
+		"appId": "com.todolist.todolist",
+		"files": [ "build/**/*", "node_modules/**/*" ],
+		"directories": {
+			"buildResources": "assets"
+		}
+	},
+	"dependencies": {
+		"autoprefixer": "^9.7.4",
+		"easy-peasy": "^3.3.0",
+		"electron-is-dev": "^1.1.0",
+		"postcss-cli": "^7.1.0",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0"
+	},
+	"scripts": {
+		"build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+		"start": "yarn build:style && BROWSER=none nf start -p 3000",
+		"react-start": "react-scripts start",
+		"react-build": "react-scripts build",
+		"react-test": "react-scripts test --env=jsdom",
+		"react-eject": "react-scripts eject",
+		"electron-start": "node src/start-react",
+		"electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+		"electron-build": "electron-builder",
+		"electron-pack": "build --em.main=build/electron.js",
+		"electron": "electron .",
+		"preelectron-pack": "yarn build",
+		"release": "yarn react-build && electron-builder --publish=always",
+		"build": "yarn react-build && yarn electron-build"
+	},
+	"browserslist": {
+		"production": [ ">0.2%", "not dead", "not op_mini all" ],
+		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+	},
+	"devDependencies": {
+		"@tailwindcss/custom-forms": "^0.2.1",
+		"concurrently": "4.1.2",
+		"electron": "^8.1.0",
+		"electron-builder": "^22.4.0",
+		"prettier": "^1.4.4",
+		"react-scripts": "3.4.0",
+		"tailwindcss": "^1.2.0",
+		"wait-on": "3.3.0"
+	}
+}
