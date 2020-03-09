@@ -1,16 +1,13 @@
 {
 	"author": "takashiidobe",
 	"name": "todo",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"private": true,
 	"homepage": "./",
 	"main": "public/electron.js",
 	"build": {
 		"appId": "com.todolist.todolist",
-		"files": [
-			"build/**/*",
-			"node_modules/**/*"
-		],
+		"files": [ "build/**/*", "node_modules/**/*" ],
 		"directories": {
 			"buildResources": "assets"
 		}
@@ -40,16 +37,8 @@
 		"build": "yarn react-build && yarn electron-build"
 	},
 	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+		"production": [ ">0.2%", "not dead", "not op_mini all" ],
+		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
 	},
 	"devDependencies": {
 		"@tailwindcss/custom-forms": "^0.2.1",
