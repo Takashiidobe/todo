@@ -32,6 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist/^todo-*.dmg$
+          asset_path: ./dist/todo-0.1.0.dmg
           asset_name: todo.dmg
           asset_content_type: application/dmg
