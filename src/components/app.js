@@ -17,7 +17,7 @@ export default function App() {
 	return (
 		<div className="App">
 			<div className="container mx-auto">
-				<div className="p-10">
+				<div className="p-10 h-64">
 					<AddTodo />
 					<Todos />
 				</div>

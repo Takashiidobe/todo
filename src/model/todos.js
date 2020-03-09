@@ -38,7 +38,5 @@ export default {
 	clear: thunk(async (actions) => {
 		await mockService.clearTodos();
 		actions.fetched([]);
-	}),
-	clearTodos: thunk(async (actions) => {}),
-	clearCompleted: thunk(async (actions) => {})
+	})
 };
