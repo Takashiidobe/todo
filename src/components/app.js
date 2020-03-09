@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useStoreActions } from 'easy-peasy';
 
-import CompletedTodos from './completed/completedTodos';
-
 import AddTodo from './todos/add-todo';
 import Todos from './todos/todos';
 
