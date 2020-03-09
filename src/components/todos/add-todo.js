@@ -20,12 +20,12 @@ export default function AddTodo() {
 	return (
 		<form>
 			<label className="block">
-				<span className="text-gray-700">Add a to-do in "Weekly Classwork"</span>
+				Add a Todo
 				<input
 					className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
 					value={text}
 					onChange={handleTextChange}
-					placeholder="Your Next Task"
+					placeholder="Add a to-do in Weekly Classwork"
 				/>
 			</label>
 			<input
