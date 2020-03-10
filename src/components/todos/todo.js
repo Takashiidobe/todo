@@ -21,8 +21,8 @@ export default function Todo({ todo: { id, text, date, done }, toggle }) {
 	const displayDate = isSameDay(dateObj) ? 'Today' : isYesterday(dateObj) ? 'Yesterday' : formattedDate;
 	return (
 		<li
-			className={`rounded overflow-hidden shadow-lg items-center px-6 py-4 mx-4 bg-white flex ${done
-				? 'line-through'
+			className={`rounded overflow-hidden shadow-lg items-center px-4 py-2 mb-1 flex todo ${done
+				? 'line-through completed-todo'
 				: ''}`}
 		>
 			<div>

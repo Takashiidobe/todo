@@ -13,14 +13,14 @@ function Todos() {
 			<h3>
 				{todosToDo.length} Item{todosToDo.length !== 1 ? 's' : ''} to complete
 			</h3>
-			<ul className="h-64 overflow-auto">
+			<ul className="mh-64 overflow-auto">
 				{todosToDo.map((todo) => <Todo key={todo.id} todo={todo} toggle={toggle} />)}
 			</ul>
 			<h1 className="mt-6">Completed</h1>
 			<h3>
 				{todosToComplete.length} Item{todosToDo.length !== 1 ? 's' : ''} completed
 			</h3>
-			<ul className="h-64 overflow-auto">
+			<ul className="mh-64 overflow-auto">
 				{todosToComplete.map((todo) => <Todo key={todo.id} todo={todo} toggle={toggle} />)}
 			</ul>
 		</div>

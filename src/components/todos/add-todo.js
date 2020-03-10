@@ -19,15 +19,12 @@ export default function AddTodo() {
 	const handleTextChange = (e) => setText(e.target.value);
 	return (
 		<form>
-			<label className="block">
-				Add a Todo
-				<input
-					className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-					value={text}
-					onChange={handleTextChange}
-					placeholder="Add a to-do in Weekly Classwork"
-				/>
-			</label>
+			<input
+				className="appearance-none rounded w-full py-2 px-3 mb-3 leading-tight add-todo"
+				value={text}
+				onChange={handleTextChange}
+				placeholder={'Add a to-do in "Weekly Classwork"...'}
+			/>
 			<input
 				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer mr-4 mt-2 mb-6"
 				type="submit"
