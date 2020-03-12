@@ -5,6 +5,7 @@ export default function AddTodo() {
 	const [ text, setText ] = useState('');
 	const save = useStoreActions((actions) => actions.todos.save);
 	const clear = useStoreActions((actions) => actions.todos.clear);
+	const undo = useStoreActions((actions) => actions.todos.undo);
 	const handleSaveClick = async (e) => {
 		e.preventDefault();
 		if (text.length > 0) {
@@ -15,6 +16,10 @@ export default function AddTodo() {
 	const handleClearClick = async (e) => {
 		e.preventDefault();
 		await clear();
+	};
+	const handleUndoClick = async (e) => {
+		e.preventDefault();
+		await undo();
 	};
 	const handleTextChange = (e) => setText(e.target.value);
 	return (
@@ -36,6 +41,12 @@ export default function AddTodo() {
 				type="submit"
 				onClick={handleClearClick}
 				value="Clear All"
+			/>
+			<input
+				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer "
+				type="submit"
+				onClick={handleUndoClick}
+				value="Undo"
 			/>
 		</form>
 	);
