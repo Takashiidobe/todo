@@ -41,7 +41,5 @@ export default {
 	}),
 	undo: thunk(async (actions) => {
 		await mockService.undoTodo();
-		const todos = await mockService.fetchTodos();
-		actions.fetched(todos);
 	})
 };
