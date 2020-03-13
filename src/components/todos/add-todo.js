@@ -37,13 +37,13 @@ export default function AddTodo() {
 				value="Add"
 			/>
 			<input
-				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer "
+				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer mr-4 mt-2 mb-6"
 				type="submit"
 				onClick={handleClearClick}
 				value="Clear All"
 			/>
 			<input
-				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer "
+				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
 				type="submit"
 				onClick={handleUndoClick}
 				value="Undo"

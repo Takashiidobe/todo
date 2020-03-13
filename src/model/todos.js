@@ -1,5 +1,5 @@
 import { action, thunk, computed } from 'easy-peasy';
-import mockService from '../mock-service';
+import service from '../service';
 
 export default {
 	items: {},
@@ -20,26 +20,27 @@ export default {
 
 	// thunks
 	fetchTodos: thunk(async (actions) => {
-		const todos = await mockService.fetchTodos();
+		const todos = await service.fetchTodos();
 		actions.fetched(todos);
 	}),
 	toggle: thunk(async (actions, payload, { getState }) => {
 		const todo = getState().items[payload];
 		if (!todo) return;
-		const updated = await mockService.updateTodo(payload, {
+		const updated = await service.updateTodo(payload, {
 			done: !todo.done
 		});
 		actions.saved(updated);
 	}),
 	save: thunk(async (actions, payload) => {
-		const todo = await mockService.saveTodo(payload);
+		const todo = await service.saveTodo(payload);
 		actions.saved(todo);
 	}),
 	clear: thunk(async (actions) => {
-		await mockService.clearTodos();
+		await service.clearTodos();
 		actions.fetched([]);
 	}),
 	undo: thunk(async (actions) => {
-		await mockService.undoTodo();
+		const todos = await service.undoTodo();
+		actions.fetched(todos);
 	})
 };
