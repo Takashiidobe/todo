@@ -29,15 +29,16 @@ export default {
 		const updated = await service.updateTodo(payload, {
 			done: !todo.done
 		});
-		actions.saved(updated);
+		const todos = await service.clearTodos();
+		actions.fetched(todos);
 	}),
 	save: thunk(async (actions, payload) => {
 		const todo = await service.saveTodo(payload);
 		actions.saved(todo);
 	}),
 	clear: thunk(async (actions) => {
-		await service.clearTodos();
-		actions.fetched([]);
+		const empty = await service.clearTodos();
+		actions.fetched(empty);
 	}),
 	undo: thunk(async (actions) => {
 		const todos = await service.undoTodo();

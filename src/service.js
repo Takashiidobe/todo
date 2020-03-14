@@ -25,58 +25,61 @@ if (parsedPrevStates !== 'undefined' && parsedPrevStates) {
 // any of CLEAR, ADD, UPDATE, UNDO
 let PREV_ACTION;
 
-export default (() => ({
-	fetchTodos: () => Promise.resolve(todos.map((x) => ({ ...x }))),
-	clearTodos: () => {
-		if (PREV_ACTION !== 'CLEAR') {
-			prevTodos.push(...todos);
-			localStorage.setItem(PREV_STATES, toJSON(todos));
-			localStorage.setItem(CURR_STATE, toJSON([]));
+const logCurr = () => console.log(localStorage.getItem('__todo_list_todos'));
 
-			PREV_ACTION = 'CLEAR';
+export default (() => {
+	return {
+		fetchTodos: () => Promise.resolve(todos.map((x) => ({ ...x }))),
+		clearTodos: () => {
+			if (PREV_ACTION !== 'CLEAR') {
+				logCurr();
+				prevTodos.push(todos);
+				localStorage.setItem(PREV_STATES, toJSON([ prevTodos ]));
+				todos = [];
+				localStorage.setItem(CURR_STATE, toJSON([ [] ]));
+
+				PREV_ACTION = 'CLEAR';
+			}
+			return Promise.resolve([ [] ]);
+		},
+		saveTodo: (text) => {
+			prevTodos.push([ ...todos ]);
+			localStorage.setItem(PREV_STATES, toJSON(prevTodos));
+			const todo = {
+				id: todos.length + 1,
+				text,
+				date: Date.now(),
+				done: false
+			};
+			todos.push({ ...todo });
+			localStorage.setItem(CURR_STATE, toJSON(todos));
+
+			PREV_ACTION = 'ADD';
+			return Promise.resolve({ ...todo });
+		},
+		updateTodo: (id, data) => {
+			prevTodos.push(todos);
+			localStorage.setItem(PREV_STATES, toJSON(prevTodos));
+			const todo = todos.find((x) => x.id === id);
+			Object.keys(data).forEach((key) => {
+				todo[key] = data[key];
+			});
+
+			localStorage.setItem(CURR_STATE, toJSON(todos));
+
+			PREV_ACTION = 'UPDATE';
+			return Promise.resolve({ ...todo });
+		},
+		undoTodo: () => {
+			if (prevTodos.length) todos = [ prevTodos.pop() ];
+			else todos = [];
+
+			localStorage.setItem(CURR_STATE, toJSON(todos));
+			localStorage.setItem(PREV_STATES, toJSON(prevTodos));
+
+			PREV_ACTION = 'UNDO';
+			if (todos.length) return Promise.resolve(todos);
+			else return Promise.resolve([]);
 		}
-	},
-	saveTodo: (text) => {
-		prevTodos.push([ ...todos ]);
-		localStorage.setItem(PREV_STATES, toJSON(prevTodos));
-		const todo = {
-			id: todos.length + 1,
-			text,
-			date: Date.now(),
-			done: false
-		};
-		todos.push({ ...todo });
-		localStorage.setItem(CURR_STATE, toJSON(todos));
-
-		PREV_ACTION = 'ADD';
-		return Promise.resolve(todo);
-	},
-	updateTodo: (id, data) => {
-		prevTodos.push([ ...todos ]);
-		localStorage.setItem(PREV_STATES, toJSON(prevTodos));
-		const todo = todos.find((x) => x.id === id);
-		Object.keys(data).forEach((key) => {
-			todo[key] = data[key];
-		});
-
-		localStorage.setItem(CURR_STATE, toJSON(todos));
-
-		PREV_ACTION = 'UPDATE';
-		return Promise.resolve({ ...todo });
-	},
-	undoTodo: () => {
-		let prevState;
-		if (prevTodos.length) prevState = [ prevTodos.pop() ];
-
-		if (!prevState) {
-			todos = [];
-			prevState = [];
-		}
-
-		localStorage.setItem(CURR_STATE, toJSON(...prevState));
-		localStorage.setItem(PREV_STATES, toJSON(prevTodos));
-
-		PREV_ACTION = 'UNDO';
-		return prevState.length ? Promise.resolve(...prevState) : Promise.resolve([]);
-	}
-}))();
+	};
+})();
