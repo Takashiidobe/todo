@@ -1,5 +1,10 @@
+@font-face {
+  font-family: "Lato-Medium";
+  src: local("Lato-Medium"), url(./assets/Lato-Medium.ttf) format("truetype");
+}
+
 * {
-  font-family: "Helvetica", "Arial", "sans-serif";
+  font-family: "Lato-Medium", "Helvetica", "Arial", "sans-serif";
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
