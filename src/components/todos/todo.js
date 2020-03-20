@@ -26,13 +26,8 @@ export default function Todo({ todo: { id, text, date, done }, toggle }) {
 				: ''}`}
 		>
 			<div>
-				<input
-					className="form-checkbox h-6 w-6 text-indigo-600"
-					type="checkbox"
-					style={{ display: 'inline-block' }}
-					defaultChecked={done}
-					onClick={() => toggle(id)}
-				/>
+				<input id={`todo-${id}`} type="checkbox" defaultChecked={done} onClick={() => toggle(id)} />
+				<label className="align-middle" htmlFor={`todo-${id}`} />
 			</div>
 			<div>
 				<span>{text}: </span>

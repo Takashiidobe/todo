@@ -65,3 +65,20 @@
   /* Most modern browsers support this now. */
   color: #ffffff;
 }
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  background: url(./assets/WLCheckbox-detailview-down.png);
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
+input[type="checkbox"]:checked + label {
+  background: url(./assets/WLCheckbox-detailview-checked-down.png);
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
