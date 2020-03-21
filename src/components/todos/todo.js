@@ -20,18 +20,14 @@ export default function Todo({ todo: { id, text, date, done }, toggle }) {
 	});
 	const displayDate = isSameDay(dateObj) ? 'Today' : isYesterday(dateObj) ? 'Yesterday' : formattedDate;
 	return (
-		<li
-			className={`rounded overflow-hidden shadow-lg items-center px-4 py-2 mb-1 flex todo ${done
-				? 'line-through completed-todo'
-				: ''}`}
-		>
+		<li className={`rounded overflow-hidden shadow-lg items-center px-4 py-2 mb-1 flex todo`}>
 			<div>
 				<input id={`todo-${id}`} type="checkbox" defaultChecked={done} onClick={() => toggle(id)} />
 				<label className="align-middle" htmlFor={`todo-${id}`} />
 			</div>
-			<div>
-				<span>{text}: </span>
-				<span>{displayDate}</span>
+			<div className="pl-2">
+				<span className={`${done ? 'line-through completed-todo' : ''}`}>{text}</span>
+				{done && <div className="text-xs">{displayDate} by Shaina</div>}
 			</div>
 		</li>
 	);

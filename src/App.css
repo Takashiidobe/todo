@@ -13,9 +13,8 @@
 .App {
   min-height: 100vh;
   overflow: auto;
-  background-size: cover;
   background-image: url("./assets/background.jpg");
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%),
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%),
     url("./assets/background.jpg");
 }
 
@@ -24,6 +23,7 @@
 }
 
 .todo {
+  height: 48px;
   background-color: #ffffff;
   opacity: 0.9;
 }
@@ -37,6 +37,14 @@
   background-color: rgb(114, 124, 132);
   outline: none;
   color: #ffffff;
+}
+
+.completed-todo-header {
+  background-color: rgb(114, 124, 132);
+  outline: none;
+  color: rgba(255, 255, 255, 0.7);
+  width: 180px;
+  font-size: 14px;
 }
 
 .add-todo::-webkit-input-placeholder {

@@ -3,8 +3,6 @@ import { setGlobalState, useGlobalState } from '../../state';
 import Todo from './todo';
 import ding from '../../assets/WLCompletionSound.mp3';
 
-const sound = new Audio(ding);
-
 function Todos() {
 	const [ todos, setTodos ] = useGlobalState('currentTodos');
 	const todosToComplete = todos.filter((todo) => todo.done);
@@ -13,7 +11,10 @@ function Todos() {
 		for (const todo of todos) {
 			if (todo.id === id) {
 				todo.done = !todo.done;
-				if (todo.done) sound.play();
+				if (todo.done) {
+					const sound = new Audio(ding);
+					sound.play();
+				}
 			}
 		}
 		setTodos([ ...todos ]);
@@ -21,17 +22,17 @@ function Todos() {
 	};
 	return (
 		<div className="mt-4">
-			<ul className="mh-64 overflow-auto">
+			<ul className="mh-48 overflow-auto">
 				{todosToDo.map((todo) => <Todo key={todo.id} todo={todo} toggle={toggle} />)}
 			</ul>
 			{todosToComplete.length ? (
-				<h3 className="">
-					{todosToComplete.length} Completed TO-DO{todosToComplete.length === 1 ? '' : 'S'}
-				</h3>
+				<h5 className="rounded py-2 px-3 mb-3 mt-3 completed-todo-header">
+					{todosToComplete.length} COMPLETED TO-DO{todosToComplete.length === 1 ? '' : 'S'}
+				</h5>
 			) : (
 				''
 			)}
-			<ul className="mh-64 overflow-auto">
+			<ul className="mh-48 overflow-auto">
 				{todosToComplete.map((todo) => <Todo key={todo.id} todo={todo} toggle={toggle} />)}
 			</ul>
 		</div>
