@@ -1,5 +1,10 @@
+@font-face {
+  font-family: "Lato-Medium";
+  src: local("Lato-Medium"), url(./assets/Lato-Medium.ttf) format("truetype");
+}
+
 * {
-  font-family: "Helvetica", "Arial", "sans-serif";
+  font-family: "Lato-Medium", "Helvetica", "Arial", "sans-serif";
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
@@ -8,9 +13,8 @@
 .App {
   min-height: 100vh;
   overflow: auto;
-  background-size: cover;
   background-image: url("./assets/background.jpg");
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%),
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%),
     url("./assets/background.jpg");
 }
 
@@ -19,6 +23,7 @@
 }
 
 .todo {
+  height: 48px;
   background-color: #ffffff;
   opacity: 0.9;
 }
@@ -32,6 +37,14 @@
   background-color: rgb(114, 124, 132);
   outline: none;
   color: #ffffff;
+}
+
+.completed-todo-header {
+  background-color: rgb(114, 124, 132);
+  outline: none;
+  color: rgba(255, 255, 255, 0.7);
+  width: 180px;
+  font-size: 14px;
 }
 
 .add-todo::-webkit-input-placeholder {
@@ -59,4 +72,21 @@
 .add-todo::placeholder {
   /* Most modern browsers support this now. */
   color: #ffffff;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  background: url(./assets/WLCheckbox-detailview-down.png);
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
+input[type="checkbox"]:checked + label {
+  background: url(./assets/WLCheckbox-detailview-checked-down.png);
+  height: 24px;
+  width: 24px;
+  display: inline-block;
 }

@@ -1,26 +1,38 @@
 import React from 'react';
-import { useStoreState, useStoreActions } from 'easy-peasy';
+import { setGlobalState, useGlobalState } from '../../state';
 import Todo from './todo';
+import ding from '../../assets/WLCompletionSound.mp3';
 
 function Todos() {
-	const todos = useStoreState((state) => state.todos.todos);
-	const toggle = useStoreActions((actions) => actions.todos.toggle);
+	const [ todos, setTodos ] = useGlobalState('currentTodos');
 	const todosToComplete = todos.filter((todo) => todo.done);
 	const todosToDo = todos.filter((todo) => !todo.done);
+	const toggle = (id) => {
+		for (const todo of todos) {
+			if (todo.id === id) {
+				todo.done = !todo.done;
+				if (todo.done) {
+					const sound = new Audio(ding);
+					sound.play();
+				}
+			}
+		}
+		setTodos([ ...todos ]);
+		localStorage.setItem('__todo_list_todos', JSON.stringify(todos));
+	};
 	return (
-		<div>
-			<h1>Todo List</h1>
-			<h3>
-				{todosToDo.length} Item{todosToDo.length !== 1 ? 's' : ''} to complete
-			</h3>
-			<ul className="mh-64 overflow-auto">
+		<div className="mt-4">
+			<ul className="mh-48 overflow-auto">
 				{todosToDo.map((todo) => <Todo key={todo.id} todo={todo} toggle={toggle} />)}
 			</ul>
-			<h1 className="mt-6">Completed</h1>
-			<h3>
-				{todosToComplete.length} Item{todosToDo.length !== 1 ? 's' : ''} completed
-			</h3>
-			<ul className="mh-64 overflow-auto">
+			{todosToComplete.length ? (
+				<h5 className="rounded py-2 px-3 mb-3 mt-3 completed-todo-header">
+					{todosToComplete.length} COMPLETED TO-DO{todosToComplete.length === 1 ? '' : 'S'}
+				</h5>
+			) : (
+				''
+			)}
+			<ul className="mh-48 overflow-auto">
 				{todosToComplete.map((todo) => <Todo key={todo.id} todo={todo} toggle={toggle} />)}
 			</ul>
 		</div>
