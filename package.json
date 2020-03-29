@@ -1,7 +1,7 @@
 {
 	"author": "takashiidobe",
 	"name": "todo",
-	"version": "0.1.13",
+	"version": "0.1.15",
 	"private": true,
 	"homepage": "./",
 	"main": "public/electron.js",
@@ -10,6 +10,9 @@
 		"files": [ "build/**/*", "node_modules/**/*" ],
 		"directories": {
 			"buildResources": "assets"
+		},
+		"mac": {
+			"icon": "./public/favicon.icns"
 		}
 	},
 	"dependencies": {
