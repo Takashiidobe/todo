@@ -10,6 +10,9 @@
 		"files": [ "build/**/*", "node_modules/**/*" ],
 		"directories": {
 			"buildResources": "assets"
+		},
+		"mac": {
+			"icon": "./public/favicon.icns"
 		}
 	},
 	"dependencies": {
