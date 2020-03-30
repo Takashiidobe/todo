@@ -14,18 +14,19 @@ const reorder = (result, startIndex, endIndex) => {
 };
 
 function Todos() {
-	const [ todosToComplete, setTodosToComplete ] = useGlobalState('todosToComplete');
-	const [ completedTodos, setCompletedTodos ] = useGlobalState('completedTodos');
+	const [ todos, setTodos ] = useGlobalState('currentTodos');
+	const todosToComplete = todos.filter((todo) => todo.done);
+	const todosToDo = todos.filter((todo) => !todo.done);
 	const onDragEnd = (result) => {
 		if (!result.destination) {
 			return;
 		}
-		const todosToComplete = reorder(todosToComplete, result.source.index, result.destination.index);
-		setTodos([ ...todosToComplete ]);
-		localStorage.setItem('__todo_list_todosToComplete', JSON.stringify(todosToComplete));
+		const items = reorder(todos, result.source.index, result.destination.index);
+		setTodos([ ...items ]);
+		localStorage.setItem('__todo_list_todos', JSON.stringify(items));
 	};
 	const toggleDone = (id) => {
-		for (const todo of todosToComplete) {
+		for (const todo of todos) {
 			if (todo.id === id) {
 				todo.done = !todo.done;
 				if (todo.done) {
@@ -52,15 +53,15 @@ function Todos() {
 	};
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
-			<RenderConditionally condition={todosToComplete.length || completedTodos.length}>
+			<RenderConditionally condition={todosToDo.length || todosToComplete.length}>
 				<Droppable droppableId="droppable">
 					{(provided, snapshot) => (
 						<div {...provided.droppableProps} ref={provided.innerRef}>
 							<div className="mt-4">
-								<RenderConditionally condition={todosToComplete.length}>
+								<RenderConditionally condition={todosToDo.length}>
 									<ul className="mh-48 overflow-auto">
-										{todosToComplete.map((todo, index) => (
-											<Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
+										{todosToDo.map((todo, index) => (
+											<Draggable key={index} draggableId={index.toString()} index={index}>
 												{(provided, snapshot) => (
 													<div
 														ref={provided.innerRef}
@@ -80,14 +81,14 @@ function Todos() {
 										))}
 									</ul>
 								</RenderConditionally>
-								<RenderConditionally condition={completedTodos.length}>
+								<RenderConditionally condition={todosToComplete.length}>
 									<h5 className="rounded py-2 px-3 mb-3 mt-3 completed-todo-header">
-										{completedTodos.length} COMPLETED TO-DO{completedTodos.length === 1 ? '' : 'S'}
+										{todosToComplete.length} COMPLETED TO-DO{todosToComplete.length === 1 ? '' : 'S'}
 									</h5>
 								</RenderConditionally>
-								<RenderConditionally condition={completedTodos.length}>
+								<RenderConditionally condition={todosToComplete.length}>
 									<ul className="mh-48 overflow-auto">
-										{completedTodos.map((todo) => (
+										{todosToComplete.map((todo) => (
 											<Todo
 												key={todo.id}
 												todo={todo}
@@ -98,6 +99,7 @@ function Todos() {
 										))}
 									</ul>
 								</RenderConditionally>
+								{provided.placeholder}
 							</div>
 						</div>
 					)}

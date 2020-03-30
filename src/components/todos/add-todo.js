@@ -3,19 +3,27 @@ import { useGlobalState } from '../../state';
 
 export default function AddTodo() {
 	const [ text, setText ] = useGlobalState('text');
-	const [ todosToComplete, setTodosToComplete ] = useGlobalState('todosToComplete');
-	const [ completedTodos, setCompletedTodos ] = useGlobalState('completedTodos');
+	const [ todos, setTodos ] = useGlobalState('currentTodos');
 	const handleTextChange = (e) => setText(e.target.value);
 	const save = () => {
-		todosToComplete.push({
-			id: todosToComplete.length + completedTodos.length + 1,
-			text,
-			date: Date.now(),
-			done: false,
-			starred: false
-		});
-		setTodosToComplete([ ...todosToComplete ]);
-		localStorage.setItem('__todo_list_todosToComplete', JSON.stringify(todosToComplete));
+		let unique = true;
+
+		for (const todo of todos) {
+			if (todo.text === text) unique = false;
+		}
+
+		if (unique) {
+			todos.push({
+				id: todos.length + 1,
+				text,
+				date: Date.now(),
+				done: false,
+				starred: false
+			});
+
+			setTodos([ ...todos ]);
+			localStorage.setItem('__todo_list_todos', JSON.stringify(todos));
+		}
 	};
 	const handleSaveClick = async (e) => {
 		e.preventDefault();
