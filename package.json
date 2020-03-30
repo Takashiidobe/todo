@@ -7,7 +7,10 @@
 	"main": "public/electron.js",
 	"build": {
 		"appId": "com.todolist.todolist",
-		"files": [ "build/**/*", "node_modules/**/*" ],
+		"files": [
+			"build/**/*",
+			"node_modules/**/*"
+		],
 		"directories": {
 			"buildResources": "assets"
 		},
@@ -20,6 +23,7 @@
 		"electron-is-dev": "^1.1.0",
 		"postcss-cli": "^7.1.0",
 		"react": "^16.13.1",
+		"react-beautiful-dnd": "^13.0.0",
 		"react-dom": "^16.13.1",
 		"react-hooks-global-state": "^1.0.0"
 	},
@@ -40,8 +44,16 @@
 		"build": "yarn react-build && yarn electron-build"
 	},
 	"browserslist": {
-		"production": [ ">0.2%", "not dead", "not op_mini all" ],
-		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"devDependencies": {
 		"@tailwindcss/custom-forms": "^0.2.1",

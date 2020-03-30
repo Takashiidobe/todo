@@ -90,3 +90,7 @@ input[type="checkbox"]:checked + label {
   width: 24px;
   display: inline-block;
 }
+
+.filler {
+  flex-grow: 1;
+}
