@@ -39,8 +39,8 @@ export default function Todo({ todo: { id, text, date, done, starred }, toggle, 
 				{done && <div className="text-xs">{displayDate} by Shaina</div>}
 			</div>
 			<div className="filler" />
-			<img src={starred ? Banner : Star} className="cursor-pointer" onClick={() => toggleStar(id)} />
-			<img src={TrashCan} className="cursor-pointer" onClick={() => toTrash(id)} />
+			<img alt="star" src={starred ? Banner : Star} className="cursor-pointer" onClick={() => toggleStar(id)} />
+			<img alt="trash" src={TrashCan} className="cursor-pointer" onClick={() => toTrash(id)} />
 		</li>
 	);
 }

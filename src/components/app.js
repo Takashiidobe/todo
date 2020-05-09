@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import AddTodo from './todos/add-todo';
 import Todos from './todos/todos';

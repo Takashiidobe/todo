@@ -1,7 +1,7 @@
 import React from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-import { setGlobalState, useGlobalState } from '../../state';
+import { useGlobalState } from '../../state';
 import RenderConditionally from '../helpers/RenderConditionally';
 import Todo from './todo';
 import ding from '../../assets/WLCompletionSound.mp3';
