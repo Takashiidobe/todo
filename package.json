@@ -46,14 +46,14 @@
 		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
 	},
 	"devDependencies": {
-		"@tailwindcss/custom-forms": "^0.2.1",
-		"concurrently": "^5.1.0",
-		"electron": "^8.1.1",
-		"electron-builder": "^22.4.1",
-		"prettier": "^1.19.1",
+		"@tailwindcss/custom-forms": "0.2.1",
+		"concurrently": "5.1.0",
+		"electron": "8.1.1",
+		"electron-builder": "22.4.1",
+		"prettier": "1.19.1",
 		"react-scripts": "3.4.0",
-		"surge": "^0.21.3",
-		"tailwindcss": "^1.2.0",
-		"wait-on": "^4.0.1"
+		"surge": "0.21.3",
+		"tailwindcss": "1.2.0",
+		"wait-on": "4.0.1"
 	}
 }
