@@ -38,7 +38,7 @@ export default function AddTodo() {
 				className="appearance-none rounded w-full py-2 px-3 mb-3 leading-tight add-todo"
 				value={text}
 				onChange={handleTextChange}
-				placeholder={'Add a to-do in "Weekly Classwork"...'}
+				placeholder={'Add a to-do in "Notes"...'}
 			/>
 		</form>
 	);
