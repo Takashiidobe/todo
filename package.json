@@ -21,6 +21,7 @@
 	"dependencies": {
 		"autoprefixer": "^9.7.4",
 		"electron-is-dev": "^1.1.0",
+		"nf": "^0.0.3",
 		"postcss-cli": "^7.1.0",
 		"react": "^16.13.1",
 		"react-beautiful-dnd": "^13.0.0",
