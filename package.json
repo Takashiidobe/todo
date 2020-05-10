@@ -1,7 +1,8 @@
 {
 	"author": "takashiidobe",
 	"name": "todo",
-	"version": "0.1.15",
+	"description": "todolist app",
+	"version": "0.1.21",
 	"private": true,
 	"homepage": "./",
 	"main": "public/electron.js",
@@ -16,18 +17,17 @@
 		}
 	},
 	"dependencies": {
-		"autoprefixer": "^9.7.4",
-		"electron-is-dev": "^1.1.0",
-		"nf": "^0.0.3",
-		"postcss-cli": "^7.1.0",
-		"react": "^16.13.1",
-		"react-beautiful-dnd": "^13.0.0",
-		"react-dom": "^16.13.1",
-		"react-hooks-global-state": "^1.0.0"
+		"autoprefixer": "9.7.4",
+		"electron-is-dev": "1.1.0",
+		"postcss-cli": "7.1.0",
+		"react": "16.13.1",
+		"react-beautiful-dnd": "13.0.0",
+		"react-dom": "16.13.1",
+		"react-hooks-global-state": "1.0.0"
 	},
 	"scripts": {
 		"build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
-		"start": "yarn build:style && BROWSER=none nf start -p 3000",
+		"start": "yarn build:style && BROWSER=none start -p 3000",
 		"react-start": "react-scripts start",
 		"react-build": "react-scripts build",
 		"react-test": "react-scripts test --env=jsdom",

@@ -1,96 +1,98 @@
 @font-face {
-  font-family: "Lato-Medium";
-  src: local("Lato-Medium"), url(./assets/Lato-Medium.ttf) format("truetype");
+	font-family: "Lato-Medium";
+	src: local("Lato-Medium"), url(./assets/Lato-Medium.ttf) format("truetype");
 }
 
 * {
-  font-family: "Lato-Medium", "Helvetica", "Arial", "sans-serif";
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+	font-family: "Lato-Medium", "Helvetica", "Arial", "sans-serif";
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
 }
 
 .App {
-  min-height: 100vh;
-  overflow: auto;
-  background-image: url("./assets/background.jpg");
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%),
-    url("./assets/background.jpg");
+	min-height: 100vh;
+	background-position: center;
+	background-image: url("./assets/background.jpg");
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%),
+		url("./assets/background.jpg");
 }
 
 .mh-64 {
-  max-height: 16rem;
+	max-height: 16rem;
 }
 
 .todo {
-  height: 48px;
-  background-color: #ffffff;
-  opacity: 0.9;
+	font-size: 14px;
+	height: 36px;
+	background-color: #ffffff;
+	opacity: 0.9;
 }
 
 .completed-todo {
-  background-color: #ffffff;
-  opacity: 0.7;
+	background-color: #ffffff;
+	opacity: 0.7;
 }
 
 .add-todo {
-  background-color: rgb(114, 124, 132);
-  outline: none;
-  color: #ffffff;
+	background-color: rgb(114, 124, 132);
+	outline: none;
+	color: #ffffff;
+	opacity: .7;
 }
 
 .completed-todo-header {
-  background-color: rgb(114, 124, 132);
-  outline: none;
-  color: rgba(255, 255, 255, 0.7);
-  width: 180px;
-  font-size: 14px;
+	background-color: rgb(114, 124, 132);
+	outline: none;
+	color: rgba(255, 255, 255, 0.7);
+	width: 180px;
+	font-size: 14px;
 }
 
 .add-todo::-webkit-input-placeholder {
-  /* WebKit, Blink, Edge */
-  color: #ffffff;
+	/* WebKit, Blink, Edge */
+	color: #ffffff;
 }
 .add-todo:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: #ffffff;
-  opacity: 1;
+	/* Mozilla Firefox 4 to 18 */
+	color: #ffffff;
+	opacity: 1;
 }
 .add-todo::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: #ffffff;
-  opacity: 1;
+	/* Mozilla Firefox 19+ */
+	color: #ffffff;
+	opacity: 1;
 }
 .add-todo:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #ffffff;
+	/* Internet Explorer 10-11 */
+	color: #ffffff;
 }
 .add-todo::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #ffffff;
+	/* Microsoft Edge */
+	color: #ffffff;
 }
 .add-todo::placeholder {
-  /* Most modern browsers support this now. */
-  color: #ffffff;
+	/* Most modern browsers support this now. */
+	color: #ffffff;
 }
 
 input[type="checkbox"] {
-  display: none;
+	display: none;
 }
 
 input[type="checkbox"] + label {
-  background: url(./assets/WLCheckbox-detailview-down.png);
-  height: 24px;
-  width: 24px;
-  display: inline-block;
+	background: url(./assets/WLCheckbox-detailview-down.png);
+	height: 24px;
+	width: 24px;
+	display: inline-block;
 }
 input[type="checkbox"]:checked + label {
-  background: url(./assets/WLCheckbox-detailview-checked-down.png);
-  height: 24px;
-  width: 24px;
-  display: inline-block;
+	background: url(./assets/WLCheckbox-detailview-checked-down.png);
+	height: 24px;
+	width: 24px;
+	display: inline-block;
 }
 
 .filler {
-  flex-grow: 1;
+	flex-grow: 1;
 }
